@@ -1,27 +1,16 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
 import Options from "./Options";
+import { connect } from "react-redux";
 import "../css/mainContent.css";
-export default class MainContent extends Component {
-  state = {
-    news: [],
-    isLoading: true
-  };
+import { getNews } from "../actions/newsAction";
+class MainContent extends Component {
   componentDidMount = () => {
-    axios
-      .get(
-        "https://newsapi.org/v2/everything?q=bitcoin&apiKey=e12c815d5ca54ead874a01c0feb3d58d"
-      )
-      .then(res => {
-        if (res.data.status === "ok") {
-          this.setState({ news: res.data.articles, isLoading: false });
-        }
-      });
+    this.props.getNews();
   };
   renderNews = () => {
-    const { news } = this.state;
+    const { news } = this.props;
     return news.map(data => {
       return (
         <Row style={{ height: "150px" }} className="my-5">
@@ -57,12 +46,16 @@ export default class MainContent extends Component {
   };
   render() {
     return (
-      <Container>
+      <Container style={{ minHeight: "100vh" }}>
         <Options />
-        {this.state.isLoading === false ? (
-          this.renderNews()
+        {this.props.isLoading === true ? (
+          this.props.errorExist === false ? (
+            this.renderNews()
+          ) : (
+            this.props.error
+          )
         ) : (
-          <div className="row">
+          <div className="row mt-5">
             <div className="lds-hourglass m-auto" />
           </div>
         )}
@@ -70,3 +63,19 @@ export default class MainContent extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    news: state.newsReducer.news,
+    isLoading: state.newsReducer.isLoading,
+    error: state.newsReducer.error,
+    errorExist: state.newsReducer.errorExist
+  };
+};
+const mapDispatchToProps = {
+  getNews: getNews
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MainContent);
