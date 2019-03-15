@@ -32,16 +32,16 @@ export default class Options extends Component {
           </select>
         </Col>
         <Col className="col-lg-8 mt-4">
-          <div class="input-group mb-3 w-50 float-right">
+          <div className="input-group mb-3 w-50 float-right">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="News keywords.."
               aria-label="News keywords.."
               aria-describedby="basic-addon2"
             />
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">
+            <div className="input-group-append">
+              <button className="btn btn-outline-secondary" type="button">
                 Search
               </button>
             </div>
