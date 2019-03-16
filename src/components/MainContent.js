@@ -48,7 +48,7 @@ class MainContent extends Component {
     return (
       <Container style={{ minHeight: "100vh" }}>
         <Options />
-        {this.props.isLoading === true ? (
+        {this.props.isLoading === false ? (
           this.props.errorExist === false ? (
             this.renderNews()
           ) : (
