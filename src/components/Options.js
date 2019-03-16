@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
-export default class Options extends Component {
+import { connect } from "react-redux";
+import { setLanguage } from "../actions/newsAction";
+class Options extends Component {
   render() {
     return (
       <Row className="my-3">
         <Col className="col-sm-12 col-lg-2">
           <label className="text-muted">Language</label>
-          <select className="form-control" id="">
+          <select className="form-control" onChange={this.props.updateLanguage}>
             <option value="en">en</option>
             <option value="ar">ar</option>
             <option value="de">de</option>
@@ -51,3 +53,16 @@ export default class Options extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    language: state.newsReducer.language,
+    sortBy: state.newsReducer.sortBy
+  };
+};
+const mapDispatchToProps = {
+  updateLanguage: setLanguage
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Options);
