@@ -7,20 +7,20 @@ export default class Options extends Component {
         <Col className="col-sm-12 col-lg-2">
           <label className="text-muted">Language</label>
           <select className="form-control" id="">
-            <option value="EN">en</option>
-            <option value="AR">ar</option>
-            <option value="AR">de</option>
-            <option value="AR">es</option>
-            <option value="AR">fr</option>
-            <option value="AR">he</option>
-            <option value="AR">it</option>
-            <option value="AR">nl</option>
-            <option value="AR">no</option>
-            <option value="AR">pt</option>
-            <option value="AR">ru</option>
-            <option value="AR">se</option>
-            <option value="AR">ud</option>
-            <option value="AR">zh</option>
+            <option value="en">en</option>
+            <option value="ar">ar</option>
+            <option value="de">de</option>
+            <option value="es">es</option>
+            <option value="fr">fr</option>
+            <option value="he">he</option>
+            <option value="it">it</option>
+            <option value="nl">nl</option>
+            <option value="no">no</option>
+            <option value="pt">pt</option>
+            <option value="ru">ru</option>
+            <option value="se">se</option>
+            <option value="ud">ud</option>
+            <option value="zh">zh</option>
           </select>
         </Col>
         <Col className="col-sm-12 col-lg-2">
