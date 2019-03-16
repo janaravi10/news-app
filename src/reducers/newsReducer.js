@@ -1,10 +1,15 @@
-import { GOT_NEWS, NEWS_LOADING_FAILED } from "../actions/actionTypes";
+import {
+  GOT_NEWS,
+  NEWS_LOADING_FAILED,
+  SETTINGS_UPDATE
+} from "../actions/actionTypes";
 
 const initialState = {
   news: [],
   isLoading: true,
   errorExist: false,
-  error: ""
+  error: "",
+  language: ""
 };
 
 export function handleNews(state = initialState, action) {
@@ -16,6 +21,8 @@ export function handleNews(state = initialState, action) {
       newState.errorExist = true;
       delete newState.news;
       return newState;
+    case SETTINGS_UPDATE:
+      return Object.assign({}, state, action.payload);
     default:
       return state;
   }
