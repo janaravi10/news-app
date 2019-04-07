@@ -11,11 +11,11 @@ class MainContent extends Component {
   };
   renderNews = () => {
     const { news } = this.props;
-    return news.map(data => {
+    return news.map((data,index) => {
       return (
-        <Row style={{ height: "150px" }} className="my-5">
-          <Col className="col-3 h-100">
-            <img src={data.urlToImage} className="rounded h-100 mw-100 w-100" />
+        <Row style={{ height: "auto" }} className="my-5" key={index}>
+          <Col className="sm-col-12 md-col-3 h-100">
+            <img src={data.urlToImage} className="rounded h-100 mw-100 w-100" alt="News image"/>
           </Col>
           <Col>
             <h5>
